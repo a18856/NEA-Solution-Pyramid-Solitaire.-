@@ -4,8 +4,9 @@ function setup() {
   deck = new deck();
   createCanvas(screenWidth,screenHight);
   rectMode(CENTER);
-  
-  deck.shuffle();
+  for(let i = 0; i < 5; i++){
+    deck.shuffle();
+  }
   
 }
 

@@ -14,31 +14,20 @@ class deck{
                       "JH","QH","KH","AD",
                       "2D","3D","4D","5D",
                       "6D","7D","8D","9D",
-                      "10D","JD","QD","KD"]
+                      "10D","JD","QD","KD"];
     
   }
   shuffle(){
-    var temp = new Array(52);// temporary array used to store the deck in its new shuffled state
-    let randomIndex;
+    let index = this.deckList.length, randomIndex; //declares index and random index
     do{
-    for(let i = 0; i < this.deckList.length - 1;i++){// iterates through the original unshuffled deck
-      randomIndex = Math.floor(Math.random() * 52);
-      if(temp[randomIndex] == undefined){//if index position is empty
-        temp[randomIndex] = this.deckList[i];//assigns the value in the index i of the original deck to the random index of the temporary one
-        console.log(temp[randomIndex]);
-      }else{
-        console.log("Index position " + randomIndex +  " is full. Skipping...");//only other data type that could be here is a string so it must hence be full
-        //i--; //decrements i-- so that the card in index i is not skipped when we skip the full index
-        //if(i <= 0){
-        //  i = 1;
-      //  }
-        
-       
-       }
-     }
-    }while(temp.includes(undefined));//checks if the temporary array is still empty
+
+      randomIndex = Math.floor(Math.random() * index);// generates random index that has not been shuffled
+      index--; //decrements index so that shuffled items are not reshuffled
+
+      [this.deckList[index],this.deckList[randomIndex]] = [ this.deckList[randomIndex], this.deckList[index]];//swaps the item at index and random index hence shuffling them.
+    }while(index != 0);//checks if there are still elements to be shuffled
       console.log("deck shuffled!");
-      console.log(temp);
+      console.log(this.deckList);
   }
   
   getTopOfDeck(){
