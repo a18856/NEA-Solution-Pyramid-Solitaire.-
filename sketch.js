@@ -1,17 +1,26 @@
+var screenWidth
+var screenHight
+var padding
 function setup() {
-  var screenWidth = 800;
-  var screenHight = 800;
+   screenWidth = 800;
+   screenHight = 800;
+   padding = 50; //used to add boarder
+  backgroundImage = loadImage("assets/background.png");
   deck = new deck();
   createCanvas(screenWidth,screenHight);
   rectMode(CENTER);
-  for(let i = 0; i < 5; i++){
-    deck.shuffle();
-  }
+ 
+  deck.shuffle();
+  deck.deal();
+   
+ console.log (deck.cardWidth);
+  
   
 }
 
 function draw() {
-  background("green");
+  background(backgroundImage);
+ 
   
   
   
