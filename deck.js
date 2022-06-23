@@ -112,16 +112,11 @@ class deck{
    console.log("deck delt!");
    
  }
-  getTopOfDeck(){
-    return this.deckList[this.headPointer];
-  }
-  getDealOrder(){
-    return this.dealOrder;
-  }
-  getHeadpointer(){
-   return this.headPointer;
-  }
-  getTailPointer(){
-   return this.tailpointer;
-  }
+  getTopOfDeck = () => this.deckList[this.headPointer];
+   
+  getDealOrder = () => this.dealOrder;
+  
+  getHeadpointer = () => this.headPointer;
+    
+  getTailPointer = () => this.tailpointer;
 }
