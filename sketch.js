@@ -1,6 +1,7 @@
 var screenWidth
 var screenHight
 var padding
+var hasBeenDelt = false
 function setup() {
    screenWidth = 800;
    screenHight = 800;
@@ -11,7 +12,7 @@ function setup() {
   rectMode(CENTER);
  
   deck.shuffle();
-  deck.deal();
+  
    
  console.log (deck.cardWidth);
   
@@ -21,7 +22,7 @@ function setup() {
 function draw() {
   background(backgroundImage);
  
-  
+  deck.deal();
   
   
   

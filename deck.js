@@ -44,8 +44,9 @@ class deck{
       
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
       this.headPointer++ //increments queue pointer for deck dequeueing the card
-     fill("white")
-     textSize(17)
+     fill("white");
+     textSize(17);
+     console.log("to be delt: " + this.dealOrder[i] );
      switch (i) {
       case 0: text(this.dealOrder[i],50,this.cardWidth*7);
          break;
