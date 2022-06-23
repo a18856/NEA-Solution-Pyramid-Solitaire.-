@@ -47,7 +47,7 @@ class deck{
      fill("white");
      textSize(17);
      console.log("to be delt: " + this.dealOrder[i] );
-     switch (i) {//                  X incrments by 100 & y by 
+     switch (i) {//                  X incrments by 100 & y by a seventh of the screen width(100px) which is equivelent to a cards width
       case 0: text(this.dealOrder[i],50,this.cardWidth*7);
          break;
       case 1: text(this.dealOrder[i],150,this.cardWidth*7);
@@ -119,4 +119,8 @@ class deck{
   getHeadpointer = () => this.headPointer;
     
   getTailPointer = () => this.tailpointer;
+
+  getCardHeight = () => this.cardHight;
+
+  getCardWidth = () => this.cardWidth;
 }
