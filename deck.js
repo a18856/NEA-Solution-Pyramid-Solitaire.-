@@ -35,74 +35,74 @@ class deck{
       console.log(this.deckList);
   }
   deal(){
-    for(let j = 0; j < 27; j++){
+    for(let j = 0; j < 28; j++){
       if(this.dealOrder[j] == undefined){
         this.dealOrder[j] = "empty";
       }
     }
-    for (let i = 0; i < 27; i++){
+    for (let i = 0; i < 28; i++){
       
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
       this.headPointer++ //increments queue pointer for deck dequeueing the card
      fill("white");
      textSize(17);
      console.log("to be delt: " + this.dealOrder[i] );
-     switch (i) {
+     switch (i) {//                  X incrments by 100 & y by 
       case 0: text(this.dealOrder[i],50,this.cardWidth*7);
          break;
-      case 1: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 1: text(this.dealOrder[i],150,this.cardWidth*7);
          break;
-      case 2: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 2: text(this.dealOrder[i],250,this.cardWidth*7);
          break;
-      case 3: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 3: text(this.dealOrder[i],350,this.cardWidth*7);
          break;
-      case 4: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 4: text(this.dealOrder[i],450,this.cardWidth*7);
          break;
-      case 5: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 5: text(this.dealOrder[i],550,this.cardWidth*7);
          break;
-      case 6: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 6: text(this.dealOrder[i],650,this.cardWidth*7);//bottom row
+         break;//                    x  must be inbetween last row
+      case 7: text(this.dealOrder[i],100,this.cardWidth*6);
          break;
-      case 7: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 8: text(this.dealOrder[i],200,this.cardWidth*6);
          break;
-      case 8: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 9: text(this.dealOrder[i],300,this.cardWidth*6);
          break;
-      case 9: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 10: text(this.dealOrder[i],400,this.cardWidth*6);
          break;
-      case 10: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 11: text(this.dealOrder[i],500,this.cardWidth*6);
          break;
-      case 11: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 12: text(this.dealOrder[i],600,this.cardWidth*6);// 6th row
          break;
-      case 12: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 13: text(this.dealOrder[i],150,this.cardWidth*5);
          break;
-      case 13: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 14: text(this.dealOrder[i],250,this.cardWidth*5);
          break;
-      case 14: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 15: text(this.dealOrder[i],350,this.cardWidth*5);
          break;
-      case 15: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 16: text(this.dealOrder[i],450,this.cardWidth*5);
          break;
-      case 16: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 17: text(this.dealOrder[i],550,this.cardWidth*5);//5th row
          break;
-      case 17: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 18: text(this.dealOrder[i],200,this.cardWidth*4);
          break;
-      case 18: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 19: text(this.dealOrder[i],300,this.cardWidth*4);
          break;
-      case 19: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 20: text(this.dealOrder[i],400,this.cardWidth*4);
          break;
-      case 20: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 21: text(this.dealOrder[i],500,this.cardWidth*4);//4th row
          break;
-      case 21: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 22: text(this.dealOrder[i],250,this.cardWidth*3);
          break;
-      case 22: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 23: text(this.dealOrder[i],350,this.cardWidth*3);
          break;
-      case 23: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 24: text(this.dealOrder[i],450,this.cardWidth*3);//3rd row
          break;
-      case 24: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 25: text(this.dealOrder[i],300,this.cardWidth*2);
          break;
-      case 25: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 26: text(this.dealOrder[i],400,this.cardWidth*2);//2nd row
          break;
-      case 26: text(this.dealOrder[i],750,this.cardWidth*7);
-         break;
-      case 27: text(this.dealOrder[i],750,this.cardWidth*7);
+      case 27: text(this.dealOrder[i],350,this.cardWidth);//top row
          break;
       default: console.log("fatal error. more cards have been delt than there are spaces.")
      }
