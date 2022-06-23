@@ -123,4 +123,6 @@ class deck{
   getCardHeight = () => this.cardHight;
 
   getCardWidth = () => this.cardWidth;
+
+  
 }
