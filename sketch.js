@@ -1,6 +1,4 @@
-var screenWidth
-var screenHight
-var padding
+var screenWidth, screenHight, padding;
 var hasBeenDelt = false
 function setup() {
    screenWidth = 800;

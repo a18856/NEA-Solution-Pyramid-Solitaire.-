@@ -35,9 +35,9 @@ class deck{
       console.log(this.deckList);
   }
   deal(){
-    for(let j = 0; j < 28; j++){
-      if(this.dealOrder[j] == undefined){
-        this.dealOrder[j] = "empty";
+    for(let i = 0; i < 28; i++){
+      if(this.dealOrder[i] == undefined){
+        this.dealOrder[i] = "empty";//fills array with strings to avoid undefined type errors.
       }
     }
     for (let i = 0; i < 28; i++){
@@ -112,7 +112,9 @@ class deck{
    console.log("deck delt!");
    
  }
-  getTopOfDeck = () => this.deckList[this.headPointer];
+ 
+ // public getters
+  getTopOfDeck = () => this.deckList[this.headPointer]; 
    
   getDealOrder = () => this.dealOrder;
   
@@ -124,5 +126,9 @@ class deck{
 
   getCardWidth = () => this.cardWidth;
 
-  
+  incrementHeadPointer(){
+   this.headPointer++;
+  }
+
+
 }
