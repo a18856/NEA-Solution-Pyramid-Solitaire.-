@@ -104,11 +104,12 @@ class deck{
          break;
       case 27: text(this.dealOrder[i],350,this.cardWidth);//top row
          break;
-      default: console.log("fatal error. more cards have been delt than there are spaces.")
+      default: throw new error("fatal error. more cards have been delt than there are spaces."); 
+
      }
   }
 
-   console.log("deck delt!")
+   console.log("deck delt!");
    
  }
   getTopOfDeck(){
@@ -117,5 +118,10 @@ class deck{
   getDealOrder(){
     return this.dealOrder;
   }
-  
+  getHeadpointer(){
+   return this.headPointer;
+  }
+  getTailPointer(){
+   return this.tailpointer;
+  }
 }
