@@ -10,7 +10,7 @@ function setup() {
   rectMode(CENTER);
  
   deck.shuffle();
-  console.log (deck.getCardWidth());
+  
    
  
   
