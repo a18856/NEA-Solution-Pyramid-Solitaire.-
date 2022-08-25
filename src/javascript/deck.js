@@ -18,10 +18,25 @@ class deck{
     this.dealOrder = new Array(28);                 
     this.headPointer = 0;
     this.tailpointer = this.deckList.length-1;
-    this.cardWidth = (screenWidth - (padding*2)) / 7; // screen is devided into 7 parts to fit the card with a padding of 50 on each side 
+    this.cardSpacing = (screenWidth - (padding*2)) / 7; // screen is devided into 7 parts to fit the cards with a padding of 50px on each side 
+    this.cardWidth = 80;
     this.cardHight = this.cardWidth*2 //1:2 ratio bertween card with and hight
+    this.cardXPositon = [//each array contains the x position of cards in a row starting from the bottom up
+      [50,150,250,350,450,550,650],//bottom row
+      [100,200,300,400,500,600],//6th row
+      [150,250,350,450,550],//5th row
+      [200,300,400,500],//4th row
+      [250,350,450],//3rd row
+      [300,400],//2nd row
+      [350]//top row
+    ];
+    this.cardYPositon =[ //the array contains the y position of cards in a row starting from the bottom up. This is calculaed by incrementing the card spacing
+      this.cardSpacing*7,this.cardSpacing*6,this.cardSpacing*5,
+      this.cardSpacing*4,this.cardSpacing*3,this.cardSpacing*2,
+      this.cardSpacing];
 
   }
+  
   shuffle(){
     let index = this.deckList.length, randomIndex; //declares index and random index
     do{
@@ -44,74 +59,136 @@ class deck{
       
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
       this.headPointer++ //increments queue pointer for deck dequeueing the card
-     fill("white");
      textSize(17);
-     console.log("to be delt: " + this.dealOrder[i] );
+     //console.log("to be delt: " + this.dealOrder[i] );
+     console.log("x: " + this.cardXPositon[0][1]);
+     console.log("y: " + this.cardYPositon[1]);
      switch (i) {//                  X incrments by 100 & y by a seventh of the screen width(100px) which is equivelent to a cards width
-      case 0: text(this.dealOrder[i],50,this.cardWidth*7);
+      case 0: rect(this.cardXPositon[0][0],this.cardYPositon[0],this.cardWidth,this.cardHight);
+         text(this.dealOrder[i],this.cardXPositon[0][0],this.cardYPositon[0]);
          break;
-      case 1: text(this.dealOrder[i],150,this.cardWidth*7);
+
+      case 1: rect(this.cardXPositon[0][1],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][1],this.cardYPositon[0]);
          break;
-      case 2: text(this.dealOrder[i],250,this.cardWidth*7);
+
+      case 2: rect(this.cardXPositon[0][2],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][2],this.cardYPositon[0]);
          break;
-      case 3: text(this.dealOrder[i],350,this.cardWidth*7);
+
+      case 3: rect(this.cardXPositon[0][3],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][3],this.cardYPositon[0]);
          break;
-      case 4: text(this.dealOrder[i],450,this.cardWidth*7);
+
+      case 4: rect(this.cardXPositon[0][4],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][4],this.cardYPositon[0]);
          break;
-      case 5: text(this.dealOrder[i],550,this.cardWidth*7);
+
+      case 5: rect(this.cardXPositon[0][5],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][5],this.cardYPositon[0]);
          break;
-      case 6: text(this.dealOrder[i],650,this.cardWidth*7);//bottom row
+
+      case 6: rect(this.cardXPositon[0][6],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[0][6],this.cardYPositon[0]);//bottom row
          break;//                    x  must be inbetween last row
-      case 7: text(this.dealOrder[i],100,this.cardWidth*6);
+
+      case 7:  rect(this.cardXPositon[1][0],this.cardYPositon[1],this.cardWidth,this.cardHight);
+          text(this.dealOrder[i],this.cardXPositon[1][0],this.cardYPositon[1]);
          break;
-      case 8: text(this.dealOrder[i],200,this.cardWidth*6);
+
+      case 8: rect(this.cardXPositon[1][1],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[1][1],this.cardYPositon[1]);
          break;
-      case 9: text(this.dealOrder[i],300,this.cardWidth*6);
+
+      case 9: rect(this.cardXPositon[1][2],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[1][2],this.cardYPositon[1]);
          break;
-      case 10: text(this.dealOrder[i],400,this.cardWidth*6);
+
+      case 10: rect(this.cardXPositon[1][3],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[1][3],this.cardYPositon[1]);
          break;
-      case 11: text(this.dealOrder[i],500,this.cardWidth*6);
+
+      case 11: rect(this.cardXPositon[1][4],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[1][4],this.cardYPositon[1]);
          break;
-      case 12: text(this.dealOrder[i],600,this.cardWidth*6);// 6th row
+
+      case 12: rect(this.cardXPositon[1][5],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[1][5],this.cardYPositon[1]);// 6th row
          break;
-      case 13: text(this.dealOrder[i],150,this.cardWidth*5);
+
+      case 13: rect(this.cardXPositon[2][0],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[2][0],this.cardYPositon[2]);
          break;
-      case 14: text(this.dealOrder[i],250,this.cardWidth*5);
+
+      case 14: rect(this.cardXPositon[2][1],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[2][1],this.cardYPositon[2]);
          break;
-      case 15: text(this.dealOrder[i],350,this.cardWidth*5);
+
+      case 15: rect(this.cardXPositon[2][2],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[2][2],this.cardYPositon[2]);
          break;
-      case 16: text(this.dealOrder[i],450,this.cardWidth*5);
+
+      case 16: rect(this.cardXPositon[2][3],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[2][3],this.cardYPositon[2]);
          break;
-      case 17: text(this.dealOrder[i],550,this.cardWidth*5);//5th row
+
+      case 17: rect(this.cardXPositon[2][4],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[2][4],this.cardYPositon[2]);//5th row
          break;
-      case 18: text(this.dealOrder[i],200,this.cardWidth*4);
+
+      case 18: rect(this.cardXPositon[3][0],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[3][0],this.cardYPositon[3]);
          break;
-      case 19: text(this.dealOrder[i],300,this.cardWidth*4);
+
+      case 19: rect(this.cardXPositon[3][1],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[3][1],this.cardYPositon[3]);
          break;
-      case 20: text(this.dealOrder[i],400,this.cardWidth*4);
+
+      case 20: rect(this.cardXPositon[3][2],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[3][2],this.cardYPositon[3]);
          break;
-      case 21: text(this.dealOrder[i],500,this.cardWidth*4);//4th row
+
+      case 21: rect(this.cardXPositon[3][3],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      text(this.dealOrder[i],this.cardXPositon[3][3],this.cardYPositon[3]);//4th row
          break;
-      case 22: text(this.dealOrder[i],250,this.cardWidth*3);
+
+      case 22: rect(this.cardXPositon[4][0],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[4][0],this.cardYPositon[4]);
          break;
-      case 23: text(this.dealOrder[i],350,this.cardWidth*3);
+
+      case 23: rect(this.cardXPositon[4][1],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[4][1],this.cardYPositon[4]);
          break;
-      case 24: text(this.dealOrder[i],450,this.cardWidth*3);//3rd row
+
+      case 24: rect(this.cardXPositon[4][2],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[4][2],this.cardYPositon[4]);//3rd row
          break;
-      case 25: text(this.dealOrder[i],300,this.cardWidth*2);
+
+      case 25: rect(this.cardXPositon[5][0],this.cardYPositon[5],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[5][0],this.cardYPositon[5]);
          break;
-      case 26: text(this.dealOrder[i],400,this.cardWidth*2);//2nd row
+
+      case 26: rect(this.cardXPositon[5][1],this.cardYPositon[5],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[5][1],this.cardYPositon[5]);//2nd row
          break;
-      case 27: text(this.dealOrder[i],350,this.cardWidth);//top row
+
+      case 27: rect(this.cardXPositon[6][0],this.cardYPositon[6],this.cardWidth,this.cardHight); 
+      text(this.dealOrder[i],this.cardXPositon[6][0],this.cardYPositon[6]);//top row
          break;
+         
       default: throw new error("fatal error. more cards have been delt than there are spaces."); 
 
      }
+     
   }
+  
 
    console.log("deck delt!");
    
  }
+ draw(){
+
+}
  
  // public getters
   getTopOfDeck = () => this.deckList[this.headPointer]; 
@@ -124,7 +201,11 @@ class deck{
 
   getCardHeight = () => this.cardHight;
 
-  getCardWidth = () => this.cardWidth;
+  getCardSpacing = () => this.cardSpacing;
+
+  getCardXPosition = (row,collum) => this.cardXPositon[row][collum];
+
+  getCardYPosition = (input) => this.cardYPosition[input];
 
   incrementHeadPointer(){
    this.headPointer++;
