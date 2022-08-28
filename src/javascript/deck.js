@@ -15,25 +15,57 @@ class deck{
                       "2D","3D","4D","5D",
                       "6D","7D","8D","9D",
                       "10D","JD","QD","KD"];
-    this.dealOrder = new Array(28);                 
+    this.dealOrder = new Array(28);   
+    this.cardNames = new Array(28);  //used to find values of delt cards. Index corrisponds wiht card number.            
     this.headPointer = 0;
+    this.hasDeckBeenDelt = false;
     this.tailpointer = this.deckList.length-1;
-    this.cardSpacing = (screenWidth - (padding*2)) / 7; // screen is devided into 7 parts to fit the cards with a padding of 50px on each side 
+    this.cardSpacing = 100;  
     this.cardWidth = 80;
+    this.cardCheckValues = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];//used to represent which cards should be hidden or not. 1 means visible and 0 means hidden
     this.cardHight = this.cardWidth*2 //1:2 ratio bertween card with and hight
     this.cardXPositon = [//each array contains the x position of cards in a row starting from the bottom up
-      [50,150,250,350,450,550,650],//bottom row
-      [100,200,300,400,500,600],//6th row
-      [150,250,350,450,550],//5th row
-      [200,300,400,500],//4th row
-      [250,350,450],//3rd row
-      [300,400],//2nd row
-      [350]//top row
-    ];
-    this.cardYPositon =[ //the array contains the y position of cards in a row starting from the bottom up. This is calculaed by incrementing the card spacing
-      this.cardSpacing*7,this.cardSpacing*6,this.cardSpacing*5,
-      this.cardSpacing*4,this.cardSpacing*3,this.cardSpacing*2,
-      this.cardSpacing];
+      [100,200,300,400,500,600,700],//bottom row
+      [150,250,350,450,550,650],//6th row
+      [200,300,400,500,600],//5th row
+      [250,350,450,550],//4th row
+      [300,400,500],//3rd row
+      [350,450],//2nd row
+      [400]//top row
+    ];//the array contains the y position of cards in a row starting from the bottom up. This is calculaed by incrementing the card spacing
+    this.cardYPositon = [700,600,500,
+      400,300,200,
+      100];
+    this.cardDirections = [// 4 items in each array starting with right then left then top them middle. Calculated by adding half of width and hight to the center of the card. Used to register  clicks.
+      [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,5) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,6) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,6) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,5) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(5,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(5,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(6,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(6,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(6) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(6) + (this.getCardHeight()/2))/*bottom*/]
+   ]
 
   }
   
@@ -55,124 +87,156 @@ class deck{
         this.dealOrder[i] = "empty";//fills array with strings to avoid undefined type errors.
       }
     }
+    
     for (let i = 0; i < 28; i++){
       
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
       this.headPointer++ //increments queue pointer for deck dequeueing the card
      textSize(17);
      //console.log("to be delt: " + this.dealOrder[i] );
-     console.log("x: " + this.cardXPositon[0][1]);
-     console.log("y: " + this.cardYPositon[1]);
+    // console.log("x: " + this.cardXPositon[0][1]);
+    // console.log("y: " + this.cardYPositon[1]);
      switch (i) {//                  X incrments by 100 & y by a seventh of the screen width(100px) which is equivelent to a cards width
-      case 0: rect(this.cardXPositon[0][0],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 0: this.cardNames[27] = this.dealOrder[i];
+      if(this.cardCheckValues[27] = 1){
+         rect(this.cardXPositon[0][0],this.cardYPositon[0],this.cardWidth,this.cardHight);
          text(this.dealOrder[i],this.cardXPositon[0][0],this.cardYPositon[0]);
-         break;
+         break;//card 27
+      }
+         
 
-      case 1: rect(this.cardXPositon[0][1],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 1: this.cardNames[26] = this.dealOrder[i];
+      rect(this.cardXPositon[0][1],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][1],this.cardYPositon[0]);
          break;
 
-      case 2: rect(this.cardXPositon[0][2],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 2: this.cardNames[25] = this.dealOrder[i];
+      rect(this.cardXPositon[0][2],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][2],this.cardYPositon[0]);
          break;
 
-      case 3: rect(this.cardXPositon[0][3],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 3: this.cardNames[24] = this.dealOrder[i];
+      rect(this.cardXPositon[0][3],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][3],this.cardYPositon[0]);
          break;
 
-      case 4: rect(this.cardXPositon[0][4],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 4: this.cardNames[23] = this.dealOrder[i];
+      rect(this.cardXPositon[0][4],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][4],this.cardYPositon[0]);
          break;
 
-      case 5: rect(this.cardXPositon[0][5],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 5: this.cardNames[22] = this.dealOrder[i];
+      rect(this.cardXPositon[0][5],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][5],this.cardYPositon[0]);
          break;
 
-      case 6: rect(this.cardXPositon[0][6],this.cardYPositon[0],this.cardWidth,this.cardHight);
+      case 6: this.cardNames[21] = this.dealOrder[i];
+      rect(this.cardXPositon[0][6],this.cardYPositon[0],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[0][6],this.cardYPositon[0]);//bottom row
          break;//                    x  must be inbetween last row
 
-      case 7:  rect(this.cardXPositon[1][0],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 7: this.cardNames[20] = this.dealOrder[i]; 
+          rect(this.cardXPositon[1][0],this.cardYPositon[1],this.cardWidth,this.cardHight);
           text(this.dealOrder[i],this.cardXPositon[1][0],this.cardYPositon[1]);
          break;
 
-      case 8: rect(this.cardXPositon[1][1],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 8: this.cardNames[19] = this.dealOrder[i];
+      rect(this.cardXPositon[1][1],this.cardYPositon[1],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[1][1],this.cardYPositon[1]);
          break;
 
-      case 9: rect(this.cardXPositon[1][2],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 9: this.cardNames[18] = this.dealOrder[i];
+      rect(this.cardXPositon[1][2],this.cardYPositon[1],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[1][2],this.cardYPositon[1]);
          break;
 
-      case 10: rect(this.cardXPositon[1][3],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 10: this.cardNames[17] = this.dealOrder[i];
+      rect(this.cardXPositon[1][3],this.cardYPositon[1],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[1][3],this.cardYPositon[1]);
          break;
 
-      case 11: rect(this.cardXPositon[1][4],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 11: this.cardNames[16] = this.dealOrder[i];
+      rect(this.cardXPositon[1][4],this.cardYPositon[1],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[1][4],this.cardYPositon[1]);
          break;
 
-      case 12: rect(this.cardXPositon[1][5],this.cardYPositon[1],this.cardWidth,this.cardHight);
+      case 12: this.cardNames[15] = this.dealOrder[i];
+      rect(this.cardXPositon[1][5],this.cardYPositon[1],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[1][5],this.cardYPositon[1]);// 6th row
          break;
 
-      case 13: rect(this.cardXPositon[2][0],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      case 13: this.cardNames[14] = this.dealOrder[i];
+      rect(this.cardXPositon[2][0],this.cardYPositon[2],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[2][0],this.cardYPositon[2]);
          break;
 
-      case 14: rect(this.cardXPositon[2][1],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      case 14: this.cardNames[13] = this.dealOrder[i];
+      rect(this.cardXPositon[2][1],this.cardYPositon[2],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[2][1],this.cardYPositon[2]);
          break;
 
-      case 15: rect(this.cardXPositon[2][2],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      case 15: this.cardNames[12] = this.dealOrder[i];
+      rect(this.cardXPositon[2][2],this.cardYPositon[2],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[2][2],this.cardYPositon[2]);
          break;
 
-      case 16: rect(this.cardXPositon[2][3],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      case 16: this.cardNames[11] = this.dealOrder[i];
+      rect(this.cardXPositon[2][3],this.cardYPositon[2],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[2][3],this.cardYPositon[2]);
          break;
 
-      case 17: rect(this.cardXPositon[2][4],this.cardYPositon[2],this.cardWidth,this.cardHight);
+      case 17: this.cardNames[10] = this.dealOrder[i];
+      rect(this.cardXPositon[2][4],this.cardYPositon[2],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[2][4],this.cardYPositon[2]);//5th row
          break;
 
-      case 18: rect(this.cardXPositon[3][0],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      case 18: this.cardNames[9] = this.dealOrder[i];
+      rect(this.cardXPositon[3][0],this.cardYPositon[3],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[3][0],this.cardYPositon[3]);
          break;
 
-      case 19: rect(this.cardXPositon[3][1],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      case 19: this.cardNames[8] = this.dealOrder[i];
+      rect(this.cardXPositon[3][1],this.cardYPositon[3],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[3][1],this.cardYPositon[3]);
          break;
 
-      case 20: rect(this.cardXPositon[3][2],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      case 20: this.cardNames[7] = this.dealOrder[i]; 
+      rect(this.cardXPositon[3][2],this.cardYPositon[3],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[3][2],this.cardYPositon[3]);
          break;
 
-      case 21: rect(this.cardXPositon[3][3],this.cardYPositon[3],this.cardWidth,this.cardHight);
+      case 21: this.cardNames[6] = this.dealOrder[i];
+      rect(this.cardXPositon[3][3],this.cardYPositon[3],this.cardWidth,this.cardHight);
       text(this.dealOrder[i],this.cardXPositon[3][3],this.cardYPositon[3]);//4th row
          break;
 
-      case 22: rect(this.cardXPositon[4][0],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      case 22: this.cardNames[5] = this.dealOrder[i];
+      rect(this.cardXPositon[4][0],this.cardYPositon[4],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[4][0],this.cardYPositon[4]);
          break;
 
-      case 23: rect(this.cardXPositon[4][1],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      case 23: this.cardNames[4] = this.dealOrder[i];
+      rect(this.cardXPositon[4][1],this.cardYPositon[4],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[4][1],this.cardYPositon[4]);
          break;
 
-      case 24: rect(this.cardXPositon[4][2],this.cardYPositon[4],this.cardWidth,this.cardHight); 
+      case 24: this.cardNames[3] = this.dealOrder[i];
+      rect(this.cardXPositon[4][2],this.cardYPositon[4],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[4][2],this.cardYPositon[4]);//3rd row
          break;
 
-      case 25: rect(this.cardXPositon[5][0],this.cardYPositon[5],this.cardWidth,this.cardHight); 
+      case 25: this.cardNames[2] = this.dealOrder[i];
+      rect(this.cardXPositon[5][0],this.cardYPositon[5],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[5][0],this.cardYPositon[5]);
          break;
 
-      case 26: rect(this.cardXPositon[5][1],this.cardYPositon[5],this.cardWidth,this.cardHight); 
+      case 26: this.cardNames[1] = this.dealOrder[i];
+      rect(this.cardXPositon[5][1],this.cardYPositon[5],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[5][1],this.cardYPositon[5]);//2nd row
          break;
 
-      case 27: rect(this.cardXPositon[6][0],this.cardYPositon[6],this.cardWidth,this.cardHight); 
+      case 27: this.cardNames[0] = this.dealOrder[i];
+      rect(this.cardXPositon[6][0],this.cardYPositon[6],this.cardWidth,this.cardHight); 
       text(this.dealOrder[i],this.cardXPositon[6][0],this.cardYPositon[6]);//top row
          break;
          
@@ -194,6 +258,8 @@ class deck{
   getTopOfDeck = () => this.deckList[this.headPointer]; 
    
   getDealOrder = () => this.dealOrder;
+
+  getDealOrderIndex = (index) => this.dealOrder[index];
   
   getHeadpointer = () => this.headPointer;
     
@@ -203,9 +269,25 @@ class deck{
 
   getCardSpacing = () => this.cardSpacing;
 
-  getCardXPosition = (row,collum) => this.cardXPositon[row][collum];
+  getCardXPositon = (row,collum) => this.cardXPositon[row][collum];
 
-  getCardYPosition = (input) => this.cardYPosition[input];
+  getCardDirections = (row,collum) => this.cardDirections[row][collum];
+
+  getCardYPositon = (input) => this.cardYPositon[input];
+
+  getCardCheckValues = (input) => this.cardCheckValues[input];
+
+  getCardNames(input){
+   return this.cardNames[input];
+  }
+
+  getCardWidth = () => this.cardWidth;
+
+  getHasDeckBeenDelt = () => this.hasDeckBeenDelt;
+  //seters
+  setCardCheckValues = (index,input) => this.cardCheckValues[index] = input;
+
+  setHasDeckBeenDelt = (input) => this.hasDeckBeenDelt = input;
 
   incrementHeadPointer(){
    this.headPointer++;
