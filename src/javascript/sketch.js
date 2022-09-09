@@ -41,32 +41,33 @@ function mouseClicked(){
  // let topOfCard = deck.getCardYPositon(0) - (deck.getCardHeight()/2)
   //let bottomOfCard = deck.getCardYPositon(0) + (deck.getCardHeight()/2)
     
-   if((mouseX <= deck.getCardDirections(0,0) && mouseX >= deck.getCardDirections(0,1))&&(mouseY >= deck.getCardDirections(0,3) && mouseY <= deck.getCardDirections(0,4))){
+   if((mouseX <= deck.getCardDirections(0,0) && mouseX >= deck.getCardDirections(0,1))&&(mouseY >= deck.getCardDirections(0,3) && mouseY <= deck.getCardDirections(0,4))){//card 27
       console.log(" you have clicked card 27 ");
       console.log("name: " + deck.getCardNames(27));
       values.setName(deck.getCardNames(27))
       clickNoise.play();
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(0));
       let tempName;
       let tempCardNum;
       values.combinationCheck()
-     // if(values.combinationCheck()){
+     /* if(values.combinationCheck()){
 
-      //  for(let i = 0;i<1;i++){
-      //    if(getLastTwoCardsNames[i] != deck.getCardNames(27)){
-       //     tempName = getLastTwoCardsNames[i]
-      //    }
-      //    for(let i = 0;i<51;i++){
-       //     if (deck.getDeckListIndex[i] == tempName){
+        for(let i = 0;i<1;i++){
+         if(getLastTwoCardsNames[i] != deck.getCardNames(27)){
+            tempName = getLastTwoCardsNames[i]
+         }
+         for(let i = 0;i<51;i++){
+           if (deck.getDeckListIndex[i] == tempName){
 
-     //       }
+          }
 
-   //       }
-  ///      }
-   //     deck.setCardCheckValues(27,0)
-  //      deck.setCardCheckValues()
-   //   }
+         }
+       }
+       deck.setCardCheckValues(27,0)
+       deck.setCardCheckValues()
+     } */
      console.log("last 2: " + values.getLastTwoCardsValues());
       
 
@@ -76,6 +77,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(26))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(1));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -86,6 +88,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(25))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(2));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -96,6 +99,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(24))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(3));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -106,6 +110,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(23))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(4));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -116,6 +121,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(22))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(5));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -126,6 +132,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(21))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(6));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -136,6 +143,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(20))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(7));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -146,6 +154,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(19))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(8));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -156,6 +165,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(18))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(9));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -166,6 +176,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(17))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(10));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -176,6 +187,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(16))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(11));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -186,6 +198,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(15))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(12));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -196,6 +209,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(14))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(13));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -206,6 +220,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(13))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(14));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -216,6 +231,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(12))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(15));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -226,6 +242,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(11))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(16));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -236,6 +253,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(10))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(17));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -246,6 +264,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(9))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(18));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -257,6 +276,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(8))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(19));
       if(values.combinationCheck()){
         deck.setCardCheckValues(19,0)
       }
@@ -269,6 +289,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(7))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(20));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -279,6 +300,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(6))
       console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(21));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -289,6 +311,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(5))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(22));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -299,6 +322,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(254))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(23));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -309,6 +333,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(3))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(24));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -319,6 +344,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(2))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(25));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -329,6 +355,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(1))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(26));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues());
       clickNoise.play();
@@ -339,6 +366,7 @@ function mouseClicked(){
       values.setName(deck.getCardNames(0))
        console.log("value: " + values.valueConverter());
       values.pushLastTwoCardsValues(values.valueConverter());
+      values.pushLastTwoCardNames(deck.getCardNames(27));
       values.combinationCheck();
       console.log("last 2: " + values.getLastTwoCardsValues())
       clickNoise.play();

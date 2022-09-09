@@ -37,7 +37,7 @@ class deck{
       400,300,200,
       100];
     this.cardDirections = [// 4 items in each array starting with right then left then top them middle. Calculated by adding half of width and hight to the center of the card. Used to register  clicks.
-      [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],// card 27
       [(this.getCardXPositon(0,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
       [(this.getCardXPositon(0,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
       [(this.getCardXPositon(0,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
@@ -374,7 +374,9 @@ class deck{
  // setCardCheckValues = (index,input) => this.cardCheckValues[index] = input;
 
   setCardCheckValues(index,input){
+   
    this.cardCheckValues[index] = input;
+
   }
 
   setHasDeckBeenDelt = (input) => this.hasDeckBeenDelt = input;
