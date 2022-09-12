@@ -33,9 +33,7 @@ class deck{
       [350,450],//2nd row
       [400]//top row
     ];//the array contains the y position of cards in a row starting from the bottom up. This is calculaed by incrementing the card spacing
-    this.cardYPositon = [700,600,500,
-      400,300,200,
-      100];
+    this.cardYPositon = [700,600,500,400,300,200,100];
     this.cardDirections = [// 4 items in each array starting with right then left then top them middle. Calculated by adding half of width and hight to the center of the card. Used to register  clicks.
       [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],// card 27
       [(this.getCardXPositon(0,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],

@@ -87,7 +87,7 @@ class values{
                         deck.setCardCheckValues(i,0);//removes matched cards from play
                         
                         console.log("checkValues: " + deck.getCardCheckValues);
-                        break;
+                        
                     }if(tempCardNum2 == deck.getDealOrderIndex(i)){
                         console.log("card being removed  " + tempCardNum2)
                         deck.setCardCheckValues(i,0);
