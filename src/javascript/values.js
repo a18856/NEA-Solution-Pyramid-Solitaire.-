@@ -54,7 +54,7 @@ class values{
                     if(tempCardNumKing == deck.getDealOrderIndex(i)){//uses the name of the card to find its position on the board by searching dealOrder
                      //   console.log("comparation with: " + deck.getDealOrderIndex[i]);
                      console.log("cardname " + tempCardNumKing);   
-                        deck.setCardCheckValues(i,0)// sets the check value of the card position to 0, removing it from play
+                        deck.setCardCheckValues(27-i,0)// sets the check value of the card position to 0, removing it from play
                         console.log("checkValues: " + deck.getCardCheckValues);
                     }
                     
@@ -84,14 +84,15 @@ class values{
                     //    console.log("comparation with: " + deck.getDealOrdexIndex[i])
                         
                         console.log("card being removed  " + tempCardNum1)
-                        deck.setCardCheckValues(i,0);//removes matched cards from play
+                        deck.setCardCheckValues(27-i,0);//removes matched cards from play. it is 27-i as card 27 ia the first card of the bottom row and cardValues[] index psotions are linked to card positions.
                         
                         console.log("checkValues: " + deck.getCardCheckValues);
                         
                     }if(tempCardNum2 == deck.getDealOrderIndex(i)){
-                        console.log("card being removed  " + tempCardNum2)
-                        deck.setCardCheckValues(i,0);
+                        console.log("card being removed  " + tempCardNum2);
+                        deck.setCardCheckValues(27-i,0);
                         console.log("checkValues: " + deck.getCardCheckValues);
+                        
 
                     }
                 }

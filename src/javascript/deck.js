@@ -1,7 +1,7 @@
 class deck{
   
    constructor(){
-  
+   
      this.deckList = ["AS","2S","3S","4S",
                       "5S","6S","7S","8S",
                       "9S","10S","JS","QS",
@@ -22,6 +22,7 @@ class deck{
     this.tailpointer = this.deckList.length-1;
     this.cardSpacing = 100;  
     this.cardWidth = 80;
+    this.rowSubtractionLookup = [7,7,7,7,7,7,6,6,6,6,6,5,5,5,5,4,4,4,3,3,2];
     this.cardCheckValues = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];//used to represent which cards should be hidden or not. 1 means visible and 0 means hidden
     this.cardHight = this.cardWidth*2 //1:2 ratio bertween card with and hight
     this.cardXPositon = [//each array contains the x position of cards in a row starting from the bottom up
@@ -35,38 +36,53 @@ class deck{
     ];//the array contains the y position of cards in a row starting from the bottom up. This is calculaed by incrementing the card spacing
     this.cardYPositon = [700,600,500,400,300,200,100];
     this.cardDirections = [// 4 items in each array starting with right then left then top them middle. Calculated by adding half of width and hight to the center of the card. Used to register  clicks.
-      [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],// card 27
-      [(this.getCardXPositon(0,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(0,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(0,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(0,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(0,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,5) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(0,6) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,6) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(1,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,5) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(2,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(2,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(2,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(2,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(2,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,4) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(3,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(3,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(3,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(3,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,3) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(4,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(4,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(4,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,2) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(5,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(5,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,1) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
-      [(this.getCardXPositon(6,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(6,0) - (this.getCardWidth()/2)),/*left*/,(this.getCardYPositon(6) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(6) + (this.getCardHeight()/2))/*bottom*/]
+      [(this.getCardXPositon(0,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],// card 27
+      [(this.getCardXPositon(0,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,2) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,3) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,4) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,5) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(0,6) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(0,6) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(0) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(0) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,2) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,3) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,4) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(1,5) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(1,5) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(1) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(1) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,2) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,3) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(2,4) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(2,4) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(2) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(2) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,2) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(3,3) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(3,3) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(3) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(3) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(4,2) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(4,2) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(4) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(4) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(5,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(5,1) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(5,1) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(5) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(5) + (this.getCardHeight()/2))/*bottom*/],
+      [(this.getCardXPositon(6,0) + (this.getCardWidth()/2)),/*right*/(this.getCardXPositon(6,0) - (this.getCardWidth()/2)),/*left*/(this.getCardYPositon(6) - (this.getCardHeight()/2)),/* top*/(this.getCardYPositon(6) + (this.getCardHeight()/2))/*bottom*/]
    ]
 
   }
-  
+  layerCheck(input){//unironicly the hardest thing here
+   let i = -1;
+   let j = 1;
+   while (input > i) {
+      //console.log("while i: " + i);
+      i += j;
+    
+      //console.log("while j: " + j)
+      j++;
+    
+      // count++;
+      
+    }
+    return j-1;
+
+  }
   shuffle(){
     let index = this.deckList.length, randomIndex; //declares index and random index
     do{
@@ -321,7 +337,7 @@ class deck{
       }
      
          break;
-         
+     
       default: throw new error("Fatal error. More cards have been delt than there are spaces."); 
 
      }
@@ -337,6 +353,7 @@ class deck{
 }
  
  // public getters
+ getRowSubtractionLookup = (input) => this.rowSubtractionLookup[input];
   getTopOfDeck = () => this.deckList[this.headPointer]; 
    
   getDealOrder = () => this.dealOrder;
