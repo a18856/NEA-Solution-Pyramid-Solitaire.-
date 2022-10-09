@@ -16,10 +16,21 @@ class deck{
                       "6D","7D","8D","9D",
                       "10D","JD","QD","KD"];
     this.dealOrder = new Array(28);   
-    this.cardNames = new Array(28);  //used to find values of delt cards. Index corrisponds wiht card number.            
+    this.cardNames = new Array(28);  //used to find values of delt cards. Index corrisponds wiht card number.
+    this.deckPile = new Array(24); 
+    this.discardPile = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "];           
     this.headPointer = 0;
+    this.discardPileHeadPointer = 0;
     this.hasDeckBeenDelt = false;
     this.tailpointer = this.deckList.length-1;
+    this.topOfDeckXPosition = 700;
+    this.topOfDeckYPosition = 100;
+    this.discardPileXPosition = 700;
+    this.discardPileYPosition = 300;
+   // this.cardDrawButtonXPosition = 700;
+   // this.cardDrawButtonWidth = 40;
+   // this.cardDrawButtonHight = 40;
+  //  this.cardDrawButtonYPosition = this.discardPileYPosition - this.topOfDeckYPosition;
     this.cardSpacing = 100;  
     this.cardWidth = 80;
     this.rowSubtractionLookup = [7,7,7,7,7,7,6,6,6,6,6,5,5,5,5,4,4,4,3,3,2];
@@ -95,6 +106,7 @@ class deck{
       console.log("deck shuffled!");
       console.log(this.deckList);
   }
+
   deal(){
     for(let i = 0; i < 28; i++){
       if(this.dealOrder[i] == undefined){
@@ -105,7 +117,7 @@ class deck{
     for (let i = 0; i < 28; i++){
       
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
-      this.headPointer++ //increments queue pointer for deck dequeueing the card
+      //this.headPointer++ //increments queue pointer for deck dequeueing the card
      textSize(17);
      //console.log("to be delt: " + this.dealOrder[i] );
     // console.log("x: " + this.cardXPositon[0][1]);
@@ -345,24 +357,60 @@ class deck{
   }
   
 
-   console.log("deck delt!");
-   
- }
- draw(){
+   for(let i = 0;i<this.deckPile.length;i++){
+      this.deckPile[i] = this.deckList[28+i];
+      
+   }
+   //console.log("deckPile: " + this.deckPile);
+  // console.log("discardPile: " + this.discardPile);
+   //console.log("deck delt!");
 
-}
+//draws the deckpile card onto the screen   
+   rect(this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
+   text(this.deckPile[this.headPointer],this.topOfDeckXPosition,this.topOfDeckYPosition);
+   //console.log("headpointer: " + this.headPointer)
+//draws the discard pile card onto the screen
+
+
+   rect(this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
+   text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+   
+   console.log(this.discardPile[this.discardPileHeadPointer])
+
+
+//draws the card draw button
+   //rect(this.cardDrawButtonXPosition,this.cardDrawButtonYPosition,this.cardDrawButtonWidth,this.cardDrawButtonHight);
+   //text("Click To Draw A Card",this.cardDrawButtonXPosition,this.cardDrawButtonYPosition);
+ }
+ 
  
  // public getters
+ getTopOfDeckXPosition = () => this.topOfDeckXPosition;
+
+ getTopOfDeckYPosition = () => this.topOfDeckYPosition;
+
+ getDiscardPileXPosition = () => this.discardPileXPosition; 
+
+ getDiscardPileYPosition = () => this.discardPileYPosition; 
+
+ getDiscardPileIndex = (input) => this.discardPile[input];
+
+ getDeckPileIndex = (input) => this.deckPile[input];
+
  getRowSubtractionLookup = (input) => this.rowSubtractionLookup[input];
-  getTopOfDeck = () => this.deckList[this.headPointer]; 
+  
+ getTopOfDeck = () => this.deckPile[this.headPointer]; 
    
   getDealOrder = () => this.dealOrder;
 
   getDealOrderIndex = (index) => this.dealOrder[index];
   
-  getHeadpointer = () => this.headPointer;
+  getDeckPileHeadPointer = () => this.headPointer;
     
-  getTailPointer = () => this.tailpointer;
+  getDiscardPileHeadPointer(){ 
+   return this.discardPileHeadPointer;
+}
+  //getTailPointer = () => this.tailpointer;
 
   getCardHeight = () => this.cardHight;
 
@@ -387,6 +435,19 @@ class deck{
   getHasDeckBeenDelt = () => this.hasDeckBeenDelt;
   //seters
  // setCardCheckValues = (index,input) => this.cardCheckValues[index] = input;
+ setDiscardPileIndex(index,input){
+      this.discardPile[index] = input;
+      console.log("input of setDiscardPile " + input)
+      console.log("index of setDiscardPile " + index)
+      console.log("outcome " + this.discardPile[index])
+      console.log("expected outcome " + this.discardPile[this.discardPileHeadPointer])
+      text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+   };
+ 
+
+   setDeckPileIndex(input,index){
+      this.deckPile[index] = input;
+   }
 
   setCardCheckValues(index,input){
    
@@ -395,9 +456,19 @@ class deck{
   }
 
   setHasDeckBeenDelt = (input) => this.hasDeckBeenDelt = input;
-
+  resetHeadPointer(){
+   this.headPointer = 0;
+  }
+  resetDiscardPileHeadPointer(){
+   this.discardPileHeadPointer = 0;
+  }
+  
   incrementHeadPointer(){
    this.headPointer++;
+   
+  }
+  incrementDiscardPileHeadPointer(){
+   this.discardPileHeadPointer++
   }
 
 
