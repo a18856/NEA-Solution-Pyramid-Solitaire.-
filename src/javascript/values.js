@@ -49,7 +49,7 @@ class values{
                 console.log("King! card removed");
                 tempCardNumKing = this.lastTwoCardNames[this.headPointer-1]//stores card position of card to be removed
                 for(let i = 0;i<51;i++){
-                    console.log(tempCardNumKing + "comparation with: " + deck.getDealOrderIndex(i));
+                    console.log(tempCardNumKing + "comparison with: " + deck.getDealOrderIndex(i));
                     
                     if(tempCardNumKing == deck.getDealOrderIndex(i)){//uses the name of the card to find its position on the board by searching dealOrder
                      //   console.log("comparation with: " + deck.getDealOrderIndex[i]);
@@ -77,7 +77,7 @@ class values{
                 console.log("removed!")
                 cardMatchNoise.play();
                 for(let i = 0;i<51;i++){
-                    console.log(tempCardNum1 + " comparation with: " + deck.getDealOrderIndex(i))
+                    console.log(tempCardNum1 + " comparison with: " + deck.getDealOrderIndex(i))
                     tempCardNum1 = this.lastTwoCardNames[0];
                     tempCardNum2 = this.lastTwoCardNames[1];
                     if(tempCardNum1 == deck.getDealOrderIndex(i)){
