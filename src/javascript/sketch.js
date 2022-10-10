@@ -91,9 +91,9 @@ if((mouseX <= deck.getTopOfDeckXPosition() + (deck.getCardWidth()/2)&& mouseX >=
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.getTopOfDeck());
-          values.setCurrentPyramidPosition(27-i)
+          values.setCurrentPyramidPosition(28)
           values.combinationCheck();
-          deck.incrementHeadPointer();
+       //   deck.incrementHeadPointer();
            
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
@@ -106,9 +106,9 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.discardPile[deck.discardPileHeadPointer]);
-          values.setCurrentPyramidPosition(27-i)
+          values.setCurrentPyramidPosition(29)
           values.combinationCheck();
-          deck.incrementDiscardPileHeadPointer();
+         // deck.incrementDiscardPileHeadPointer();
          
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();

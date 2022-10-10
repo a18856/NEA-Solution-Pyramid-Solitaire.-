@@ -65,6 +65,15 @@ class values{
                     if(tempCardNumKing == deck.getDealOrderIndex(i)){//uses the name of the card to find its position on the board by searching dealOrder
                      //   console.log("comparation with: " + deck.getDealOrderIndex[i]);
                      console.log("cardname " + tempCardNumKing);   
+                        if(this.currentPyramidPosition > 27){
+                            if(this.currentPyramidPosition == 28){
+                                deck.deckPile[deck.headPointer] = " "
+                                deck.incrementHeadPointer
+                            }else if(this.currentPyramidPosition == 29){
+                                deck.discardPile[deck.discardPileHeadPointer] = " "
+                                deck.incrementDiscardPileHeadPointer
+                            }
+                        }
                         deck.setCardCheckValues(27-i,0)// sets the check value of the card position to 0, removing it from play
                         console.log("checkValues: " + deck.getCardCheckValues);
                     }

@@ -18,6 +18,7 @@ class deck{
     this.dealOrder = new Array(28);   
     this.cardNames = new Array(28);  //used to find values of delt cards. Index corrisponds wiht card number.
     this.deckPile = new Array(24); 
+    this.deckPileSetupCheck = false;
     this.discardPile = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "];           
     this.headPointer = 0;
     this.discardPileHeadPointer = 0;
@@ -355,12 +356,13 @@ class deck{
      }
      
   }
-  
-
-   for(let i = 0;i<this.deckPile.length;i++){
-      this.deckPile[i] = this.deckList[28+i];
-      
-   }
+  if(!this.deckPileSetupCheck){
+      for(let i = 0;i<this.deckPile.length;i++){
+            this.deckPile[i] = this.deckList[28+i];
+            this.deckPileSetupCheck = true;
+         }
+       }
+   
    //console.log("deckPile: " + this.deckPile);
   // console.log("discardPile: " + this.discardPile);
    //console.log("deck delt!");
@@ -385,6 +387,8 @@ class deck{
  
  
  // public getters
+
+ 
  getTopOfDeckXPosition = () => this.topOfDeckXPosition;
 
  getTopOfDeckYPosition = () => this.topOfDeckYPosition;
