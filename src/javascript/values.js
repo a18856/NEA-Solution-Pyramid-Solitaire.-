@@ -1,5 +1,6 @@
 class values{
     constructor(){
+        //est
         this.name = "nameless"; //name of card to be converted into a value
         this.cardList = //used as a reference table to find the value of cards
         ["AS","2S","3S","4S",
