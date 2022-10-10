@@ -127,7 +127,11 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
           deck.resetDiscardPileHeadPointer();
           deck.resetHeadPointer();
         }
+        
       }else{
+       // if(deck.getTopOfDeck == " "){
+       //   deck.incrementHeadPointer;
+       // }
         console.log("top of discard: " +  deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer()))
         console.log("discard pile head pointer: " + deck.discardPileHeadPointer)
         deck.incrementDiscardPileHeadPointer();
