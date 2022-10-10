@@ -60,6 +60,7 @@ function mouseClicked(){
           		console.log("value: " + values.valueConverter());
           		values.pushLastTwoCardsValues(values.valueConverter());
           		values.pushLastTwoCardNames(deck.getCardNames(27-i));
+              values.setCurrentPyramidPosition(27-i);
           		values.combinationCheck();
           		console.log("last 2: " + values.getLastTwoCardsValues());
           		clickNoise.play();
@@ -73,6 +74,7 @@ function mouseClicked(){
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.getCardNames(27-i));
+          values.setCurrentPyramidPosition(27-i);
           values.combinationCheck();
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
@@ -89,8 +91,9 @@ if((mouseX <= deck.getTopOfDeckXPosition() + (deck.getCardWidth()/2)&& mouseX >=
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.getTopOfDeck());
-          
-          deck.incrementHeadPointer
+          values.setCurrentPyramidPosition(27-i)
+          values.combinationCheck();
+          deck.incrementHeadPointer();
            
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
@@ -103,8 +106,9 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.discardPile[deck.discardPileHeadPointer]);
-         
-          deck.incrementDiscardPileHeadPointer
+          values.setCurrentPyramidPosition(27-i)
+          values.combinationCheck();
+          deck.incrementDiscardPileHeadPointer();
          
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();

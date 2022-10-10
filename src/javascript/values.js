@@ -23,6 +23,8 @@ class values{
         12,13,1,2,3,4,5,6,7,8,
         9,10,11,12,13,1,2,3,4,
         5,6,7,8,9,10,11,12,13];
+
+        this.currentPyramidPosition;
         
         this.deckPileCheckValue = 0;
 
@@ -101,7 +103,7 @@ class values{
                     tempCardNum2 = this.lastTwoCardNames[1];
                     if(tempCardNum1 == deck.getDealOrderIndex(i)){
                     //    console.log("comparation with: " + deck.getDealOrdexIndex[i])
-                    if(this.deckPileCheckValue == 1){//removes card from deck pile
+                   /* if(this.deckPileCheckValue == 1){//removes card from deck pile
                         deck.deckPile[deck.headPointer] = " "
                         deck.incrementHeadPointer();
                         this.deckPileCheckValue = 0;
@@ -110,16 +112,16 @@ class values{
                         deck.discardPile[deck.discardPileHeadPointer] = " "
                         deck.incrementDiscardPileHeadPointer();
                         this.discardPileCheckValue = 0;
-                     }else{
+                     }*/
                         console.log("card being removed  " + tempCardNum1)
                         deck.setCardCheckValues(27-i,0);//removes matched cards from play. it is 27-i as card 27 ia the first card of the bottom row and cardValues[] index psotions are linked to card positions.
                         
                         console.log("checkValues: " + deck.getCardCheckValues);
-                     }
+                     
                         
                         
                     }if(tempCardNum2 == deck.getDealOrderIndex(i)){
-                        if(this.deckPileCheckValue == 1){//removes card from deck pile
+                        /*if(this.deckPileCheckValue == 1){//removes card from deck pile
                             deck.deckPile[deck.headPointer] = " "
                             deck.incrementHeadPointer();
                             this.deckPileCheckValue = 0;
@@ -131,11 +133,11 @@ class values{
                             this.discardPileCheckValue = 0;
                             console.log("card being removed  " + tempCardNum2)
                             console.log("checkValues: " + deck.getCardCheckValues);
-                         }else{
+                         }*/
                             console.log("card being removed  " + tempCardNum2);
                             deck.setCardCheckValues(27-i,0);
                             console.log("checkValues: " + deck.getCardCheckValues);
-                         }
+                         
                         
                         
 
@@ -175,6 +177,10 @@ class values{
     getLastTwoCardsValues = () => this.lastTwoCardsValues;
 
     getLastTwoCardsValuesIndex = (index) => this.lastTwoCardsValues[index];
+
+    getCurrentPyramidPosition = () => this.currentPyramidPosition;
+
+    setCurrentPyramidPosition = (input) => this.currentPyramidPosition = input;
 
     setName = (input) => this.name = input;
 
