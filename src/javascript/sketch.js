@@ -83,6 +83,7 @@ function mouseClicked(){
 }
 if((mouseX <= deck.getTopOfDeckXPosition() + (deck.getCardWidth()/2)&& mouseX >= deck.getTopOfDeckXPosition()-(deck.getCardWidth()/2))&&(mouseY >= deck.getTopOfDeckYPosition() - (deck.getCardHeight()/2) && mouseY <= deck.getTopOfDeckYPosition() + (deck.getCardHeight()/2))){
   console.log("you have clicked the deckPile");
+          values.setDeckPileCheckValue(1);
           console.log("name: " + deck.getTopOfDeck());
           values.setName(deck.getTopOfDeck());
           console.log("value: " + values.valueConverter());
@@ -96,11 +97,12 @@ if((mouseX <= deck.getTopOfDeckXPosition() + (deck.getCardWidth()/2)&& mouseX >=
 }
 if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX >= deck.getDiscardPileXPosition()-(deck.getCardWidth()/2))&&(mouseY >= deck.getDiscardPileYPosition() - (deck.getCardHeight()/2) && mouseY <= deck.getDiscardPileYPosition() + (deck.getCardHeight()/2))){
   console.log("you have clicked the discard pile");
-          console.log("name: " + deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer + 1));
-          values.setName(deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer + 1 ));
+          values.setDiscardPileCheckValue(1);
+          console.log("name: " + deck.discardPile[deck.discardPileHeadPointer]);
+          values.setName(deck.discardPile[deck.discardPileHeadPointer]);
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
-          values.pushLastTwoCardNames(deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer + 1));
+          values.pushLastTwoCardNames(deck.discardPile[deck.discardPileHeadPointer]);
          
           deck.incrementDiscardPileHeadPointer
          
@@ -117,9 +119,6 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
       if(deck.getDeckPileHeadPointer() == 24){
         console.log("all items in array have been put in the discard pile. Putting discard pile into deck")
         for(let i = 0; i< 24; i++){
-       //   if(){
-
-         // }
           deck.setDeckPileIndex(deck.getDiscardPileIndex(i),i);
           deck.resetDiscardPileHeadPointer();
           deck.resetHeadPointer();
