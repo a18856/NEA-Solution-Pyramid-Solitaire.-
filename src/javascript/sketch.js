@@ -18,7 +18,7 @@ function setup() {
    padding = 50; //used to add boarder
   backgroundImage = loadImage("assets/images/background.png");
   backgroundWon = loadImage("assets/images/background.jpg");
-  deck = new deck();
+  deck = new deck(won);
   values = new values();
   createCanvas(screenWidth,screenHight);
   rectMode(CENTER);
@@ -33,6 +33,7 @@ function setup() {
 }
 
 function draw() {
+  deck.wonCheck(won);
   if(!won){
     background(backgroundImage);
   }else{
@@ -45,13 +46,13 @@ function draw() {
   //text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
 
  // deck.dealDeckAndDiscard();
- let count = 0;
+ let countOfZeros = 0;
  let temp = deck.getCardCheckValues();
 for(let i = 0; i<27;i++){
   if(temp[i] == 0){
-    count++
-    console.log("count: " + count)
-  }if (count == 27){
+    countOfZeros++
+    console.log("count: " + countOfZeros)
+  }if (countOfZeros == 27){
     
     won = true;
   }
@@ -75,7 +76,8 @@ function mouseClicked(){
           console.log("if statment less that or = 20")
           let layer = deck.layerCheck(27-i);
           if((deck.getCardCheckValuesIndex((27-i) + layer) == 0) && (deck.getCardCheckValuesIndex(((27-i) + layer) + 1) == 0)){//uses layer of current card to find the two cards below it and checks if they are removed
-			        console.log("you have clicked card " + (27-i));
+			        
+              console.log("you have clicked card " + (27-i));
           		console.log("name: " + deck.getCardNames(27-i));
           		values.setName(deck.getCardNames(27-i));
           		console.log("value: " + values.valueConverter());
@@ -99,6 +101,7 @@ function mouseClicked(){
           values.combinationCheck();
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
+          
         }
         
     
@@ -160,5 +163,8 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
         deck.incrementHeadPointer();
        
       }
+    }
+    if(keyCode === 72){
+      window.open('src/HTML/howToPlay.html')
     }
   }

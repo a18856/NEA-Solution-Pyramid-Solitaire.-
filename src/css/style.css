@@ -12,3 +12,6 @@ canvas {
   padding: 20px;
   text-align: center;
 }
+.controls{
+  text-align-last: left;
+}
