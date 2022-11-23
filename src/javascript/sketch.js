@@ -1,8 +1,10 @@
 var screenWidth, screenHight, padding;
 var hasBeenDelt = false
 let k = 0;
+let won = false;
 function preload()
 {
+  
   backgroundMusic = loadSound('assets/audio/WetHands.wav');
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
   failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
@@ -10,10 +12,12 @@ function preload()
 }
  
 function setup() {
+  
    screenWidth = 800;
    screenHight = 800;
    padding = 50; //used to add boarder
   backgroundImage = loadImage("assets/images/background.png");
+  backgroundWon = loadImage("assets/images/background.jpg");
   deck = new deck();
   values = new values();
   createCanvas(screenWidth,screenHight);
@@ -29,13 +33,30 @@ function setup() {
 }
 
 function draw() {
-  background(backgroundImage);
+  if(!won){
+    background(backgroundImage);
+  }else{
+    background(backgroundWon);
+  }
+  
+  
  
   deck.deal();
   //text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
 
  // deck.dealDeckAndDiscard();
+ let count = 0;
+ let temp = deck.getCardCheckValues();
+for(let i = 0; i<27;i++){
+  if(temp[i] == 0){
+    count++
+    console.log("count: " + count)
+  }if (count == 27){
+    
+    won = true;
+  }
   
+}
   
   
 }
