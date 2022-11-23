@@ -1,6 +1,5 @@
 var screenWidth, screenHight, padding;
 var hasBeenDelt = false
-let k = 0;
 let won = false;
 function preload()
 {
@@ -67,7 +66,7 @@ function mouseClicked(){
  // let topOfCard = deck.getCardYPositon(0) - (deck.getCardHeight()/2)
   //let bottomOfCard = deck.getCardYPositon(0) + (deck.getCardHeight()/2)
     
-  for(i = 0; i < 27; i++){
+  for(i = 0; i < 28; i++){
 
 
     if((mouseX <= deck.getCardDirections(i,0) && mouseX >= deck.getCardDirections(i,1))&&(mouseY >= deck.getCardDirections(i,2) && mouseY <= deck.getCardDirections(i,3))){
