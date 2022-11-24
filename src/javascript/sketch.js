@@ -1,9 +1,73 @@
 var screenWidth, screenHight, padding;
 var hasBeenDelt = false
 let won = false;
+var suit;
+let tempCardNum= [];
+let cardImages = [];
+let x = 0
+let currentIndex;
+var value;
+
 function preload()
 {
-  
+  for (let i = 0; i<4; i++){
+    switch(i){
+      case 0:
+         suit = 'S';
+       
+         break;
+      case 1:
+        suit = 'C';
+        break;
+      case 2:
+        suit ='H';
+        break;
+      case 3:
+        suit = 'D';
+        break;
+      default:
+        console.log('-_-')
+    }
+      
+    for( let j = 1;j<14;j++){
+      currentIndex = j;
+     switch(j){
+       case 1:
+         value = 'A'
+         break;
+       case 11:
+         value = 'J'
+         break;
+       case 12:
+         value = 'Q'
+         break;
+       case 13:
+         value = 'K'
+         break;
+       default:
+        value = j;
+         console.log("no special case");
+         break;
+
+     }
+     tempCardNum[j-1] = (value + suit + '.png')
+     console.log("ptempCardNum: " +  tempCardNum[j-1])
+     
+       
+      console.log("inner loop count: " + j)
+      cardImages[x] = loadImage('assets/images/cards/'+ tempCardNum[j-1])
+      console.log("attempting to load " + tempCardNum[j-1])
+      console.log("number of cards loaded: ")
+     
+    }
+    
+      
+      
+    
+      
+      
+    
+  }
   backgroundMusic = loadSound('assets/audio/WetHands.wav');
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
   failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
