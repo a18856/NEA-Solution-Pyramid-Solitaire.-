@@ -1,7 +1,8 @@
+
 class deck{
   
-   constructor(){
-   
+   constructor(won){
+     this.won = won
      this.deckList = ["AS","2S","3S","4S",
                       "5S","6S","7S","8S",
                       "9S","10S","JS","QS",
@@ -18,6 +19,7 @@ class deck{
     this.dealOrder = new Array(28);   
     this.cardNames = new Array(28);  //used to find values of delt cards. Index corrisponds wiht card number.
     this.deckPile = new Array(24); 
+    this.deckPileSetupCheck = false;
     this.discardPile = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "];           
     this.headPointer = 0;
     this.discardPileHeadPointer = 0;
@@ -355,17 +357,20 @@ class deck{
      }
      
   }
-  
-
-   for(let i = 0;i<this.deckPile.length;i++){
-      this.deckPile[i] = this.deckList[28+i];
-      
-   }
+  if(!this.deckPileSetupCheck){
+      for(let i = 0;i<this.deckPile.length;i++){
+            this.deckPile[i] = this.deckList[28+i];
+            this.deckPileSetupCheck = true;
+         }
+       }
+   
    //console.log("deckPile: " + this.deckPile);
   // console.log("discardPile: " + this.discardPile);
    //console.log("deck delt!");
 
-//draws the deckpile card onto the screen   
+       console.log(this.won)
+   if(!this.won){
+   //draws the deckpile card onto the screen 
    rect(this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
    text(this.deckPile[this.headPointer],this.topOfDeckXPosition,this.topOfDeckYPosition);
    //console.log("headpointer: " + this.headPointer)
@@ -374,6 +379,8 @@ class deck{
 
    rect(this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
    text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+}
+   
    
    console.log(this.discardPile[this.discardPileHeadPointer])
 
@@ -382,9 +389,13 @@ class deck{
    //rect(this.cardDrawButtonXPosition,this.cardDrawButtonYPosition,this.cardDrawButtonWidth,this.cardDrawButtonHight);
    //text("Click To Draw A Card",this.cardDrawButtonXPosition,this.cardDrawButtonYPosition);
  }
- 
+wonCheck(input){
+   this.won = input
+ }
  
  // public getters
+
+ 
  getTopOfDeckXPosition = () => this.topOfDeckXPosition;
 
  getTopOfDeckYPosition = () => this.topOfDeckYPosition;
