@@ -1,6 +1,7 @@
 class values{
     constructor(){
         //est
+        this.score = 0;
         this.name = "nameless"; //name of card to be converted into a value
         this.cardList = //used as a reference table to find the value of cards
         ["AS","2S","3S","4S",
@@ -79,6 +80,7 @@ class values{
                     }
                     
                 }
+                this.incrementScore();
                 cardMatchNoise.play();
 
                 for(let i = 0; i<= 1;i++){//emptys stack after compairing 
@@ -105,6 +107,7 @@ class values{
             if((this.lastTwoCardsValues[0] + this.lastTwoCardsValues[1]) == 13){
                 
                 console.log("removed!")
+                this.incrementScore();
                 cardMatchNoise.play();
                 for(let i = 0;i<51;i++){
                     console.log(tempCardNum1 + " comparison with: " + deck.getDealOrderIndex(i))
@@ -183,6 +186,10 @@ class values{
             
         }
     }
+    incrementScore(){
+        this.score+= 5;
+    }
+    getScore = () => this.score;
     getLastTwoCardsValues = () => this.lastTwoCardsValues;
 
     getLastTwoCardsValuesIndex = (index) => this.lastTwoCardsValues[index];

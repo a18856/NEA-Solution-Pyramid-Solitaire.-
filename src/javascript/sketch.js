@@ -26,7 +26,7 @@ function preload()
         suit = 'D';
         break;
       default:
-        console.log('-_-')
+        console.log('you should not see this message ever')
     }
       
     for( let j = 1;j<14;j++){
@@ -45,7 +45,7 @@ function preload()
          value = 'K'
          break;
        default:
-        value = j;
+         value = j;
          console.log("no special case");
          break;
 
@@ -57,8 +57,8 @@ function preload()
       console.log("inner loop count: " + j)
       cardImages[x] = loadImage('assets/images/cards/'+ tempCardNum[j-1])
       console.log("attempting to load " + tempCardNum[j-1])
-      console.log("number of cards loaded: ")
-     
+      console.log("cardLoaded: " + cardImages[x])
+     x++
     }
     
       
