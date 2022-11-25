@@ -3,7 +3,7 @@ var hasBeenDelt = false
 let won = false;
 var suit;
 let tempCardNum= [];
-let cardImages = [];
+var cardImages = [];
 let x = 0
 let currentIndex;
 var value;
@@ -25,8 +25,8 @@ function preload()
       case 3:
         suit = 'D';
         break;
-      default:
-        console.log('you should not see this message ever')
+      default: throw new error("out of bounds");
+        
     }
       
     for( let j = 1;j<14;j++){
@@ -84,6 +84,7 @@ function setup() {
   deck = new deck(won);
   values = new values();
   createCanvas(screenWidth,screenHight);
+  
   rectMode(CENTER);
  
   deck.shuffle();
@@ -114,7 +115,7 @@ function draw() {
 for(let i = 0; i<27;i++){
   if(temp[i] == 0){
     countOfZeros++
-    console.log("count: " + countOfZeros)
+   // console.log("count: " + countOfZeros)
   }if (countOfZeros == 27){
     
     won = true;

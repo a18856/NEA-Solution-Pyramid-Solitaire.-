@@ -192,6 +192,10 @@ class values{
     getScore = () => this.score;
     getLastTwoCardsValues = () => this.lastTwoCardsValues;
 
+    getCardList = () => this.cardList;
+
+    getCardListIndex = (index) => this.cardList[index];
+
     getLastTwoCardsValuesIndex = (index) => this.lastTwoCardsValues[index];
 
     getCurrentPyramidPosition = () => this.currentPyramidPosition;
