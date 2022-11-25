@@ -120,6 +120,7 @@ class deck{
       this.dealOrder[i] = this.deckList[i]; //creates order in which cards are delt
       //this.headPointer++ //increments queue pointer for deck dequeueing the card
      textSize(17);
+     strokeWeight(4);
      //console.log("to be delt: " + this.dealOrder[i] );
     // console.log("x: " + this.cardXPositon[0][1]);
     // console.log("y: " + this.cardYPositon[1]);
@@ -398,17 +399,44 @@ class deck{
        //console.log(this.won)
    if(!this.won){
    //draws the deckpile card onto the screen 
-   imageMode(CENTER);
-//image(cardImages[this.textToImage(this.deckPile[this.headPointer])],this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
-   rect(this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
-   text(this.deckPile[this.headPointer],this.topOfDeckXPosition,this.topOfDeckYPosition);
+   try{
+      imageMode(CENTER);
+      image(cardImages[this.textToImage(this.deckPile[this.headPointer])],this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
+      
+ //  rect(this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
+  // text(this.deckPile[this.headPointer],this.topOfDeckXPosition,this.topOfDeckYPosition);
    //console.log("headpointer: " + this.headPointer)
 //draws the discard pile card onto the screen
    
   // image(cardImages[this.textToImage(this.discardPile[this.discardPileHeadPointer])],this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
-   rect(this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
-   text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+   
    imageMode(CORNER);
+   }catch(TypeError){
+      
+         imageMode(CENTER);
+   //image(cardImages[this.textToImage(this.deckPile[this.headPointer])],this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
+      rect(this.topOfDeckXPosition,this.topOfDeckYPosition,this.cardWidth,this.cardHight);
+      text(this.deckPile[this.headPointer],this.topOfDeckXPosition,this.topOfDeckYPosition);
+      //console.log("headpointer: " + this.headPointer)
+   //draws the discard pile card onto the screen
+      
+     // image(cardImages[this.textToImage(this.discardPile[this.discardPileHeadPointer])],this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
+      
+      imageMode(CORNER);
+   }
+   try{
+      imageMode(CENTER);
+      image(cardImages[this.textToImage(this.discardPile[this.discardPileHeadPointer])],this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
+      //rect(this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
+     // text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+      imageMode(CORNER);
+   }catch(TypeError){
+      imageMode(CENTER);
+      rect(this.discardPileXPosition,this.discardPileYPosition,this.cardWidth,this.cardHight);
+      text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
+      imageMode(CORNER);
+   }
+   
 }
    ellipse(200,100,125,100)
    text("score: " + values.getScore(),150,100);

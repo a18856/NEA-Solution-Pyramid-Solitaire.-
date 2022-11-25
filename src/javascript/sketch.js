@@ -72,6 +72,8 @@ function preload()
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
   failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
   clickNoise = loadSound('assets/audio/clickNoise.mp3')
+  drawNoise = loadSound('assets/audio/drawNoise.mp3')
+  shuffleNoise = loadSound('assets/audio/shuffleNoise.mp3')
 }
  
 function setup() {
@@ -209,6 +211,7 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
   function keyPressed() {
     if (keyCode === 68){
       if(deck.getDeckPileHeadPointer() == 24){
+        shuffleNoise.play();
         console.log("all items in array have been put in the discard pile. Putting discard pile into deck")
         for(let i = 0; i< 24; i++){
           deck.setDeckPileIndex(deck.getDiscardPileIndex(i),i);
@@ -220,6 +223,7 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
        // if(deck.getTopOfDeck == " "){
        //   deck.incrementHeadPointer;
        // }
+       drawNoise.play();
         console.log("top of discard: " +  deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer()))
         console.log("discard pile head pointer: " + deck.discardPileHeadPointer)
         deck.incrementDiscardPileHeadPointer();
