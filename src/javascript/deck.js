@@ -36,7 +36,7 @@ class deck{
     this.cardWidth = 80;
     this.rowSubtractionLookup = [7,7,7,7,7,7,6,6,6,6,6,5,5,5,5,4,4,4,3,3,2];
     this.cardCheckValues = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];//used to represent which cards should be hidden or not. 1 means visible and 0 means hidden
-    this.cardHight = this.cardWidth*2 //1:2 ratio bertween card with and hight
+    this.cardHight = this.cardWidth*2 //1:2 ratio bertween card width and hight
     this.cardXPositon = [//each array contains the x position of cards in a row starting from the bottom up
       [100,200,300,400,500,600,700],//bottom row
       [150,250,350,450,550,650],//6th row
