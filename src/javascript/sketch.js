@@ -29,7 +29,7 @@ function preload()
         
     }
       
-    for( let j = 1;j<14;j++){
+    for( let j = 1;j<14;j++){// 1 to 14 and not 0 to 13 to account for the special cases and concatenate strings in one loop
       currentIndex = j;
      switch(j){
        case 1:
