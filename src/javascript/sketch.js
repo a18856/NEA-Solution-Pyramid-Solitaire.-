@@ -51,7 +51,7 @@ function preload()
 
      }
      tempCardNum[j-1] = (value + suit + '.png')
-     console.log("ptempCardNum: " +  tempCardNum[j-1])
+     console.log("tempCardNum: " +  tempCardNum[j-1])
      
        
       console.log("inner loop count: " + j)
