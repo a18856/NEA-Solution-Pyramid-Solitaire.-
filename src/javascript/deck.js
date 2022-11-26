@@ -380,7 +380,7 @@ class deck{
      
          break;
      
-      default: throw new error("Fatal error. More cards have been delt than there are spaces."); 
+      default: throw new Error("Fatal error. More cards have been delt than there are spaces."); 
 
      }
      imageMode(CORNER)
