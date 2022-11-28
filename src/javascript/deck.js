@@ -387,7 +387,7 @@ class deck{
   }
   if(!this.deckPileSetupCheck){
       for(let i = 0;i<this.deckPile.length;i++){
-            this.deckPile[i] = this.deckList[27+i];
+            this.deckPile[i] = this.deckList[28+i];
             this.deckPileSetupCheck = true;
          }
        }

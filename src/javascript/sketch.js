@@ -25,11 +25,11 @@ function preload()
       case 3:
         suit = 'D';
         break;
-      default: throw new Error("out of bounds");
+      default: throw new error("out of bounds");
         
     }
       
-    for( let j = 1;j<14;j++){// 1 to 14 and not 0 to 13 to account for the special cases and concatenate strings in one loop
+    for( let j = 1;j<14;j++){
       currentIndex = j;
      switch(j){
        case 1:
@@ -58,7 +58,7 @@ function preload()
       cardImages[x] = loadImage('assets/images/cards/'+ tempCardNum[j-1])
       console.log("attempting to load " + tempCardNum[j-1])
       console.log("cardLoaded: " + cardImages[x])
-     x++
+      x++
     }
     
       
@@ -72,8 +72,6 @@ function preload()
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
   failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
   clickNoise = loadSound('assets/audio/clickNoise.mp3')
-  drawNoise = loadSound('assets/audio/drawNoise.mp3')
-  shuffleNoise = loadSound('assets/audio/shuffleNoise.mp3')
 }
  
 function setup() {
@@ -211,7 +209,6 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
   function keyPressed() {
     if (keyCode === 68){
       if(deck.getDeckPileHeadPointer() == 24){
-        shuffleNoise.play();
         console.log("all items in array have been put in the discard pile. Putting discard pile into deck")
         for(let i = 0; i< 24; i++){
           deck.setDeckPileIndex(deck.getDiscardPileIndex(i),i);
@@ -223,7 +220,6 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
        // if(deck.getTopOfDeck == " "){
        //   deck.incrementHeadPointer;
        // }
-       drawNoise.play();
         console.log("top of discard: " +  deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer()))
         console.log("discard pile head pointer: " + deck.discardPileHeadPointer)
         deck.incrementDiscardPileHeadPointer();
