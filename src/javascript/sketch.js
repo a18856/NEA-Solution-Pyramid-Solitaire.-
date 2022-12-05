@@ -157,7 +157,7 @@ function mouseClicked(){
           
           console.log("you have clicked card " + (27-i));
           console.log("name: " + deck.getCardNames(27-i));
-          values.setName(deck.getCardNames(27-i));
+          values.setName(deck.getCardName(27-i));
           console.log("value: " + values.valueConverter());
           values.pushLastTwoCardsValues(values.valueConverter());
           values.pushLastTwoCardNames(deck.getCardNames(27-i));
@@ -230,5 +230,10 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
     }
     if(keyCode === 72){
       window.open('src/HTML/howToPlay.html')
+    }
+    if (keyCode === 82){
+      window.location.reload();
+      
+      
     }
   }

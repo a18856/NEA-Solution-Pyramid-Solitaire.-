@@ -437,9 +437,11 @@ class deck{
       imageMode(CORNER);
    }
    
-}
+}if(!won){
    ellipse(200,100,125,100)
    text("score: " + values.getScore(),150,100);
+}
+   
    
    console.log(this.discardPile[this.discardPileHeadPointer])
 
