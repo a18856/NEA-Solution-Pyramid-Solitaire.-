@@ -2,6 +2,7 @@ var screenWidth, screenHight, padding;
 var hasBeenDelt = false
 let won = false;
 var suit;
+let x = 0;
 let tempCardNum= [];
 var cardImages = [];
 let currentIndex;
@@ -68,11 +69,11 @@ function preload()
     
   }
   backgroundMusic = loadSound('assets/audio/WetHands.wav');
-  cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
-  failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
-  clickNoise = loadSound('assets/audio/clickNoise.mp3')
-  shuffleNoise = loadSound('assets/audio/shuffleNoise.mp3')
-  drawNoise = loadSound('assets/audio/drawNoise.mp3')
+  cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav");
+  failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav');
+  clickNoise = loadSound('assets/audio/clickNoise.mp3');
+  shuffleNoise = loadSound('assets/audio/shuffleNoise.mp3');
+  drawNoise = loadSound('assets/audio/drawNoise.mp3');
 }
  
 function setup() {
