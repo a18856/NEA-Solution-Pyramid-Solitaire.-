@@ -72,6 +72,8 @@ function preload()
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav")
   failedMatchNoise = loadSound('assets/audio/failedMatchNoise.wav')
   clickNoise = loadSound('assets/audio/clickNoise.mp3')
+  shuffleNoise = loadSound('assets/audio/shuffleNoise.mp3')
+  drawNoise = loadSound('assets/audio/drawNoise.mp3')
 }
  
 function setup() {
@@ -215,7 +217,7 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
           deck.resetDiscardPileHeadPointer();
           deck.resetHeadPointer();
         }
-        
+        shuffleNoise.play();
       }else{
        // if(deck.getTopOfDeck == " "){
        //   deck.incrementHeadPointer;
@@ -225,7 +227,7 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
         deck.incrementDiscardPileHeadPointer();
         deck.setDiscardPileIndex(deck.getDiscardPileHeadPointer() ,deck.getDeckPileIndex(deck.getDeckPileHeadPointer()));
         deck.incrementHeadPointer();
-       
+       drawNoise.play();
       }
     }
     if(keyCode === 72){
