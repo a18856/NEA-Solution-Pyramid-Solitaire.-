@@ -4,7 +4,6 @@ let won = false;
 var suit;
 let tempCardNum= [];
 var cardImages = [];
-let x = 0
 let currentIndex;
 var value;
 
@@ -25,7 +24,7 @@ function preload()
       case 3:
         suit = 'D';
         break;
-      default: throw new error("out of bounds");
+      default: throw new Error("out of bounds");
         
     }
       
