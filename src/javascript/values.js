@@ -1,6 +1,5 @@
 class values{
     constructor(){
-        //est
         this.score = 0;
         this.name = "nameless"; //name of card to be converted into a value
         this.cardList = //used as a reference table to find the value of cards
@@ -38,8 +37,6 @@ class values{
         this.headPointer = 0; //pointer for lastTwoCardsValues. Is used to reset the stack when it is full
         this.nameHeadPointer = 0; //same as above but for card nanmes
     }
-    
-
     valueConverter(){//returns value of a card
         let i;
         for ( i = 0; i<52;i++){
@@ -48,7 +45,6 @@ class values{
             }
         }  
     }
-    
     combinationCheck(){
         let tempCardNum1;
         let tempCardNum2;
@@ -114,45 +110,13 @@ class values{
                     tempCardNum1 = this.lastTwoCardNames[0];
                     tempCardNum2 = this.lastTwoCardNames[1];
                     if(tempCardNum1 == deck.getDealOrderIndex(i)){
-                    //    console.log("comparation with: " + deck.getDealOrdexIndex[i])
-                   /* if(this.deckPileCheckValue == 1){//removes card from deck pile
-                        deck.deckPile[deck.headPointer] = " "
-                        deck.incrementHeadPointer();
-                        this.deckPileCheckValue = 0;
-                     }
-                     if(this.discardPileCheckValue == 1){//removes card from deck pile
-                        deck.discardPile[deck.discardPileHeadPointer] = " "
-                        deck.incrementDiscardPileHeadPointer();
-                        this.discardPileCheckValue = 0;
-                     }*/
                         console.log("card being removed  " + tempCardNum1)
                         deck.setCardCheckValues(27-i,0);//removes matched cards from play. it is 27-i as card 27 ia the first card of the bottom row and cardValues[] index psotions are linked to card positions.
-                        
                         console.log("checkValues: " + deck.getCardCheckValues);
-                     
-                        
-                        
                     }if(tempCardNum2 == deck.getDealOrderIndex(i)){
-                        /*if(this.deckPileCheckValue == 1){//removes card from deck pile
-                            deck.deckPile[deck.headPointer] = " "
-                            deck.incrementHeadPointer();
-                            this.deckPileCheckValue = 0;
-                            console.log("card being removed  " + tempCardNum2)
-                            console.log("checkValues: " + deck.getCardCheckValues);
-                         }else if(this.discardPileCheckValue == 1){//removes card from deck pile
-                            deck.discardPile[deck.discardPileHeadPointer] = " "
-                            deck.incrementDiscardPileHeadPointer();
-                            this.discardPileCheckValue = 0;
-                            console.log("card being removed  " + tempCardNum2)
-                            console.log("checkValues: " + deck.getCardCheckValues);
-                         }*/
                             console.log("card being removed  " + tempCardNum2);
                             deck.setCardCheckValues(27-i,0);
                             console.log("checkValues: " + deck.getCardCheckValues);
-                         
-                        
-                        
-
                     }   
                 }
                 for(let i = 0; i<= 1;i++){
@@ -183,7 +147,6 @@ class values{
             this.nameHeadPointer = 0;
                return false;
             }
-            
         }
     }
     incrementScore(){
@@ -218,9 +181,4 @@ class values{
         this.nameHeadPointer++;
         console.log("headpointer: " + this.nameHeadPointer);
     }
-
-      
-      
-      
-    
 }

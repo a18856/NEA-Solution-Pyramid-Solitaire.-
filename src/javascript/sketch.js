@@ -60,13 +60,6 @@ function preload()
       console.log("cardLoaded: " + cardImages[x])
       x++
     }
-    
-      
-      
-    
-      
-      
-    
   }
   backgroundMusic = loadSound('assets/audio/WetHands.wav');
   cardMatchNoise = loadSound("assets/audio/cardMatchNoise.wav");
@@ -77,7 +70,6 @@ function preload()
 }
  
 function setup() {
-  
    screenWidth = 800;
    screenHight = 800;
    padding = 50; //used to add boarder
@@ -91,11 +83,6 @@ function setup() {
  
   deck.shuffle();
   backgroundMusic.play();
-  
- 
- 
-  
-  
 }
 
 function draw() {
@@ -106,12 +93,7 @@ function draw() {
     background(backgroundWon);
   }
   
-  
- 
   deck.deal();
-  //text(this.discardPile[this.discardPileHeadPointer],this.discardPileXPosition,this.discardPileYPosition);
-
- // deck.dealDeckAndDiscard();
  let countOfZeros = 0;
  let temp = deck.getCardCheckValues();
 for(let i = 0; i<27;i++){
@@ -122,20 +104,11 @@ for(let i = 0; i<27;i++){
     
     won = true;
   }
-  
 }
-  
   
 }
 function mouseClicked(){
- // let rightOfCard = deck.getCardXPositon(0,0) + (deck.getCardWidth()/2)
- // let leftOfCard = deck.getCardXPositon(0,0) - (deck.getCardWidth()/2)
- // let topOfCard = deck.getCardYPositon(0) - (deck.getCardHeight()/2)
-  //let bottomOfCard = deck.getCardYPositon(0) + (deck.getCardHeight()/2)
-    
   for(i = 0; i < 28; i++){
-
-
     if((mouseX <= deck.getCardDirections(i,0) && mouseX >= deck.getCardDirections(i,1))&&(mouseY >= deck.getCardDirections(i,2) && mouseY <= deck.getCardDirections(i,3))){
       console.log("if statment collison")
         if((27-i) <= 20){
@@ -183,8 +156,6 @@ if((mouseX <= deck.getTopOfDeckXPosition() + (deck.getCardWidth()/2)&& mouseX >=
           values.pushLastTwoCardNames(deck.getTopOfDeck());
           values.setCurrentPyramidPosition(28)
           values.combinationCheck();
-       //   deck.incrementHeadPointer();
-           
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
 }
@@ -198,15 +169,9 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
           values.pushLastTwoCardNames(deck.discardPile[deck.discardPileHeadPointer]);
           values.setCurrentPyramidPosition(29)
           values.combinationCheck();
-         // deck.incrementDiscardPileHeadPointer();
-         
           console.log("last 2: " + values.getLastTwoCardsValues());
           clickNoise.play();
 }
-    //console.log("you have not clicked a card");
-    //console.log("mouseX " + mouseX);
-    //console.log("mouseY " + mouseY);
-  
 }
   function keyPressed() {
     if (keyCode === 68){
@@ -219,9 +184,6 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
         }
         shuffleNoise.play();
       }else{
-       // if(deck.getTopOfDeck == " "){
-       //   deck.incrementHeadPointer;
-       // }
         console.log("top of discard: " +  deck.getDiscardPileIndex(deck.getDiscardPileHeadPointer()))
         console.log("discard pile head pointer: " + deck.discardPileHeadPointer)
         deck.incrementDiscardPileHeadPointer();
@@ -235,7 +197,5 @@ if((mouseX <= deck.getDiscardPileXPosition() + (deck.getCardWidth()/2)&& mouseX 
     }
     if (keyCode === 82){
       window.location.reload();
-      
-      
     }
   }
