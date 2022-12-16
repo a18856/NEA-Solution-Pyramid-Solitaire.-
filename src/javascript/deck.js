@@ -75,7 +75,7 @@ class deck{
    ]
 
   }
-  layerCheck(input){//unironicly the hardest thing here
+  layerCheck(input){
    let i = -1;
    let j = 1;
    while (input > i) {
